@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * <Class description>
@@ -44,10 +45,11 @@ public class MeasureDTO {
     @JsonProperty("Device Id")
     public String deviceId;
 
-    public MeasureDTO() {
-    }
+    public Date createdAt;
 
-    public MeasureDTO(String email, String username, Integer heartRate, Integer confidence, Integer spo2, Double objectTemperature, String deviceId) {
+
+    public MeasureDTO(Date createDate, String email, String username, Integer heartRate, Integer confidence, Integer spo2, Double objectTemperature, String deviceId) {
+        this.createdAt = createDate;
         this.email = email;
         this.username = username;
         this.heartRate = heartRate;
