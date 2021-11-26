@@ -44,4 +44,18 @@ public class MeasureDTO {
     @JsonProperty("Device Id")
     public String deviceId;
 
+    public MeasureDTO() {
+    }
+
+    public MeasureDTO(String email, String username, Integer heartRate, Integer confidence, Integer spo2, Double objectTemperature, String deviceId) {
+        this.email = email;
+        this.username = username;
+        this.heartRate = heartRate;
+        this.confidence = confidence;
+        this.spo2 = spo2;
+        this.status = status;
+        this.objectTemperature = objectTemperature;
+        this.ambientTemperature = ambientTemperature;
+        this.deviceId = deviceId;
+    }
 }

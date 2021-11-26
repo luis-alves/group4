@@ -66,7 +66,15 @@ public class DeviceService {
 
     private MeasureDTO buildResponse(Measure measure) {
 
-        return null;
+        //@formatter:off
+        return new MeasureDTO("test",
+                            "user",
+                            measure.getHeartRate(),
+                            measure.getConfidence(),
+                            measure.getSpo2(),
+                            measure.getObjectTemperature(),
+                            measure.getDeviceId());
+        //@formatter:on
 
 
     }
