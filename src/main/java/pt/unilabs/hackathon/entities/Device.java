@@ -28,7 +28,11 @@ public class Device {
     @Column(name = "mac_id")
     private String macId;
 
+    public Device(String macId) {
+        this.macId = macId;
+    }
+
     public static Device toEntity(String deviceId) {
-        return null;
+        return new Device(deviceId);
     }
 }

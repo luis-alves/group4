@@ -40,6 +40,7 @@ public class DeviceService {
 
         if (optionalDevice.isPresent()) {
             measuresRepository.save(Measure.toEntity(measureDto));
+            return;
         }
 
         createDeviceAndPersistMeasure(measureDto);
@@ -47,20 +48,26 @@ public class DeviceService {
 
     private void createDeviceAndPersistMeasure(MeasureDTO measureDto) {
         deviceRepository.save(Device.toEntity(measureDto.getDeviceId()));
+
+        measuresRepository.save(Measure.toEntity(measureDto));
     }
 
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    private List<MeasureDTO> getUserLastTenMeasures(@RequestParam("deviceId") String deviceId, @RequestParam("limit") Integer limit) {
+    private List<MeasureDTO> getUserLastMeasures(@RequestParam("deviceId") String deviceId, @RequestParam("limit") Integer limit) {
 
+        //@formatter:off
         return measuresRepository.getByDeviceId(deviceId, limit)
-                .stream()
-                .map(this::buildresponse)
-                .collect(Collectors.toList());
+                                .stream()
+                                .map(this::buildResponse)
+                                .collect(Collectors.toList());
+        //@formatter:on
     }
 
-    private MeasureDTO buildresponse(Measure measure) {
+    private MeasureDTO buildResponse(Measure measure) {
+
         return null;
+
 
     }
 }
